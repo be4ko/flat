@@ -9,6 +9,7 @@ import Cart from '../../Assets/cart.png'
 import favourite from '../../Assets/favourite.png'
 import categoryIcon from '../../Assets/category.png'
 import brandsIcon from '../../Assets/tag.png'
+import HomeIcon from '../../Assets/HomeIcon.svg'
 
 
 export default function Navbar() {
@@ -38,7 +39,7 @@ export default function Navbar() {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {userToken ?         <ul className="navbar-nav me-auto align-items-center">
           <li className="nav-item">
-            <Link to={'/'} className="nav-link " >Home</Link>
+            <Link to={'/'} className="nav-link " ><img height={40}  src={HomeIcon} alt="" /></Link>
           </li>
           <li className="nav-item">
             <Link to={'/Brands'} className="nav-link " ><img height={28} src={brandsIcon} alt="" /></Link>

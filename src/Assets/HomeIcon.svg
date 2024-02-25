@@ -1,0 +1,16 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlnsSvg="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <pattern height="100" width="100" y="0" x="0" patternUnits="userSpaceOnUse" id="gridpattern">
+    <image height="100" width="100" y="0" x="0" id="svg_2"/>
+   </pattern>
+  </defs>
+  <rect id="svg_9" height="104.000005" width="91.999996" y="279.000009" x="290.000024" stroke-width="0" stroke="#999999" fill="#ffffff"/>
+  <g id="svg_11">
+   <rect id="svg_6" height="200.753061" width="231.999989" y="184.773312" x="207.612742" stroke-width="0" stroke="#0fafa9" fill="#0fafa9"/>
+   <path id="svg_7" d="m161.20856,206.508363c0,0 160.85027,-111.18896 160.9279,-113.01262c0.07761,-1.82365 155.45499,109.6147 155.45499,109.6147c0,0 -316.38289,3.39792 -316.38289,3.39792z" stroke-width="0" stroke="#0fafa9" fill="#0fafa9"/>
+  </g>
+  <rect stroke="#0fafa9" id="svg_8" height="96.999995" width="85.999998" y="288.999982" x="280.399996" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
+ </g>
+</svg>

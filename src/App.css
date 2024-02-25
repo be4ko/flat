@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 :root {
-  --bgColor: #0aad0a;
+  --bgColor: #009986;
+  ;
   --lightBgColor: #f0f3f2;
   --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
     rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
@@ -91,4 +92,20 @@ a:hover {
   font-style: normal;
   color: #009986;
   width: 1%;
+}
+
+@keyframes color-rotate {
+  from {
+      filter: hue-rotate(0deg);
+  }
+  to {
+      filter: hue-rotate(360deg);
+  }
+}
+
+
+.logo:hover {
+  animation: color-rotate 1s;
+  animation-iteration-count: infinite; 
+  animation-direction: alternate;
 }
