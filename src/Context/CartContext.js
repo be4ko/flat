@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const CartContext =createContext();
 export default function CartContextProvider(props){
+    const [numOfCartItems, setNumOfCartItems] = useState(0);
 
     let headers = {
         token: localStorage.getItem('userToken')};
@@ -39,7 +40,29 @@ export default function CartContextProvider(props){
         .catch(err=>err)        
     }
 
-    return <CartContext.Provider value={{addProductToCard,getLoggedCart,removeProductFromCart,updateProductQuantity}}>
+    async function startInitialCartCount(){
+        const {data} = await getLoggedCart();
+        setNumOfCartItems(data.numOfCartItems);
+        console.log(data.numOfCartItems);
+    }
+
+    useEffect(() => {
+        startInitialCartCount();
+    }, [])
+    
+
+    return <CartContext.Provider 
+    value={{
+        addProductToCard,
+        getLoggedCart,
+        removeProductFromCart,
+        updateProductQuantity,
+        numOfCartItems,
+        setNumOfCartItems,
+        startInitialCartCount
+  
+    }}
+    >
         {props.children}
     </CartContext.Provider>
 }

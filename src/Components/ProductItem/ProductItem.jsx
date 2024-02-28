@@ -7,7 +7,7 @@ import { WishListContext } from '../../Context/WishListContext';
 
 export default function ProductItem({ product }) {
 
-  const {addProductToCard} = useContext(CartContext);
+  const {addProductToCard,setNumOfCartItems } = useContext(CartContext);
   const {addProductToWishList} =  useContext(WishListContext);
 
   async function addToWishList(e,id){
@@ -27,10 +27,7 @@ export default function ProductItem({ product }) {
     if(data.status === 'success' ){
       toast.success(data.message, {position:'bottom-right'});
     }
-    else {
-      toast.error(data.message, {position:'bottom-right'});
-    }
-
+    setNumOfCartItems(data.numOfCartItems);
   }
 
   return (

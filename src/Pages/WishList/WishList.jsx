@@ -41,7 +41,6 @@ export default function WishList() {
 
         {products.map(product =>
           <div className='row border-bottom m-2 align-items-center' key={product._id}>
-            {console.log(products)}
             <div className="col-md-1">
               <img height={140} src={product?.imageCover} alt={product?.title} />
             </div>

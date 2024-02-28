@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 export default function ProductDetails() {
   const [details, setDetails] = useState({})
   const [loading, setLoading] = useState(false)
-  const {addProductToCard} = useContext(CartContext);
+  const {addProductToCard,setNumOfCartItems } = useContext(CartContext);
 
 
   let {id} = useParams();
@@ -33,9 +33,7 @@ export default function ProductDetails() {
     if(data.status === 'success' ){
         toast.success(data.message, {position:'bottom-right'});
     }
-    else {
-      toast.error(data.message, {position:'bottom-right'});
-    }
+    setNumOfCartItems(data.numOfCartItems);
   }
   
   var settings = {
@@ -56,7 +54,7 @@ export default function ProductDetails() {
           <InfinitySpin
             visible={true}
             width="200"
-            color="#4fa94d"
+            color="#009986"
             ariaLabel="infinity-spin-loading"
           />
         </div> :

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { InfinitySpin } from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 export default function Brands() {
   const [allBrands, setAllBrands] = useState([])
@@ -25,17 +26,17 @@ export default function Brands() {
           <InfinitySpin
             visible={true}
             width="200"
-            color="#4fa94d"
+            color="#009986"
             ariaLabel="infinity-spin-loading"
           />
         </div>
       ) : (
         <div className='justify-content-center text-center row w-100'>
           {allBrands.map((brand) => (
-            <div className="col-md-3 product m-2">
+            <Link className="col-md-3 product m-2 text-decoration-none text-dark ">
               <h1 className='h5'>{brand.name}</h1>
               <img src={brand.image} alt={brand.name} />
-            </div>
+            </Link>
           ))}
         </div>
       )}

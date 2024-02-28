@@ -4,7 +4,7 @@ import empty from '../../Assets/empty.jpg';
 
 export default function Cart() {
 
-  const { getLoggedCart, removeProductFromCart, updateProductQuantity } = useContext(CartContext);
+  const { getLoggedCart, removeProductFromCart, updateProductQuantity,setNumOfCartItems } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [cartPrice, setCartPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0)
@@ -15,6 +15,7 @@ export default function Cart() {
     setProducts(data?.data.products);
     setCartPrice(data?.data?.totalCartPrice);
     setTotalItems(data?.numOfCartItems);
+    setNumOfCartItems(data.numOfCartItems);
   }
 
   async function updateQuantity(id, count) {
@@ -50,7 +51,6 @@ export default function Cart() {
 
         {products.map(product =>
           <div className='row border-bottom m-2 align-items-center' key={product._id}>
-            {console.log(products)}
             <div className="col-md-1">
               <img height={140} src={product?.product?.imageCover} alt={product?.product?.title} />
             </div>

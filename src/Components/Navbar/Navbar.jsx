@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './Navbar.module.css'
-import logo from '../../Assets/turbohub.svg'
+// import logo from '../../Assets/turbohub.svg'
 import { Link } from 'react-router-dom'
 // import { CounterContext } from '../../Context/CounterContext'
 import { UserContext } from '../../Context/UserContext'
@@ -10,12 +10,14 @@ import favourite from '../../Assets/favourite.png'
 import categoryIcon from '../../Assets/category.png'
 import brandsIcon from '../../Assets/tag.png'
 import HomeIcon from '../../Assets/HomeIcon.svg'
+import { CartContext } from '../../Context/CartContext';
 
 
 export default function Navbar() {
 
   // let { counter } = useContext(CounterContext);
-  let { userToken, setUserToken } = useContext(UserContext);
+  const { userToken, setUserToken } = useContext(UserContext);
+  const {numOfCartItems} = useContext(CartContext);
   let navigate = useNavigate();
 
 
@@ -28,7 +30,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to={''} className="navbar-brand logo" >
+      <Link to={''} className="navbar-brand logo  " >
         <h1 className='pacifico-regular'>Flat</h1>
       </Link>
       {/* {counter} */}
@@ -37,9 +39,9 @@ export default function Navbar() {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        {userToken ?         <ul className="navbar-nav me-auto align-items-center">
+        {userToken ? <ul className="navbar-nav me-auto align-items-center">
           <li className="nav-item">
-            <Link to={'/'} className="nav-link " ><img height={40}  src={HomeIcon} alt="" /></Link>
+            <Link to={'/'} className="nav-link pe-0" ><img height={40} src={HomeIcon} alt="" /></Link>
           </li>
           <li className="nav-item">
             <Link to={'/Brands'} className="nav-link " ><img height={28} src={brandsIcon} alt="" /></Link>
@@ -48,10 +50,16 @@ export default function Navbar() {
             <Link to={'/categories'} className="nav-link " ><img height={25} src={categoryIcon} alt="" /></Link>
           </li>
           <li className="nav-item">
-            <Link to={'/cart'} className="nav-link " ><img height={30} src={Cart} alt="" /></Link>
+            <Link to={'/cart'} className="nav-link position-relative" >
+              <img height={30} src={Cart} alt="" />
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                {numOfCartItems}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to={'/wishlist'} className="nav-link " ><img height={25 } src={favourite} alt="" /></Link>
+            <Link to={'/wishlist'} className="nav-link " ><img height={25} src={favourite} alt="" /></Link>
           </li>
         </ul> : null
 
