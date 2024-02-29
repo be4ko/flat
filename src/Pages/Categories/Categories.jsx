@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { Helmet } from 'react-helmet';
 import { InfinitySpin } from 'react-loader-spinner';
 
 export default function Categories() {
@@ -22,6 +23,9 @@ export default function Categories() {
 
   return (
     <div className='container'>
+            <Helmet>
+              <title>Categories</title>  
+            </Helmet>
       {loader === true ? (
         <div className='d-flex justify-content-center'>
           <InfinitySpin

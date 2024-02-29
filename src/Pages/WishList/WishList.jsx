@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function WishList() {
   
-  const { getLoggedWishList, removeProductFromWishList } = useContext(WishListContext);
+  const { getLoggedWishList, removeProductFromWishList ,setNumOfFavItems } = useContext(WishListContext);
   const [products, setProducts] = useState([]);
   const [totalItems, setTotalItems] = useState(0)
 
@@ -15,12 +15,15 @@ export default function WishList() {
     const { data } = await removeProductFromWishList(id);
     setProducts(data?.data);
     setTotalItems(data?.count);
+    setNumOfFavItems(data.count);
   }
 
   async function getWishList() {
     const  {data}  = await getLoggedWishList();
     setProducts(data?.data);
     setTotalItems(data?.count);
+    setNumOfFavItems(data?.count);
+
   }
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export default function WishList() {
         </div>
 
         {products.map(product =>
-          <div className='row border-bottom m-2 align-items-center' key={product._id}>
+          <div className='row border-bottom m-2 align-items-center' key={product?._id}>
             <div className="col-md-1">
               <img height={140} src={product?.imageCover} alt={product?.title} />
             </div>
@@ -48,7 +51,7 @@ export default function WishList() {
               <div className="d-flex justify-content-between align-items-center">
                 <div className="col-md-9">
                   <h4>{product?.title}</h4>
-                  <h6 className='text-main mx-2'>Price: {product.price} EGP</h6>
+                  <h6 className='text-main mx-2'>Price: {product?.price} EGP</h6>
                   <h6 onClick={() => { deleteProduct(product?._id) }} className='text-main cursor-pointer'>
                     <Link className='fa-solid fa-trash-can mx-2'></Link>Remove
                   </h6>

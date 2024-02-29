@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import empty from '../../Assets/empty.jpg';
+import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
 
@@ -39,7 +41,7 @@ export default function Cart() {
 
 
   return (
-    <div className='container bg-main-light p-4'>
+    <div className='container bg-main-light p-4 mb-5'>
       {totalItems === 0 ? <div className="d-flex justify-content-center row p-4 w-100" > <img className='col-md-10 me-9 px-9 w-50' height={400} src={empty} alt="empty" /> <h1 className='col-md-9 text-center text-main'>No Items in the cart</h1> </div>
       : 
       <>
@@ -54,6 +56,9 @@ export default function Cart() {
             <div className="col-md-1">
               <img height={140} src={product?.product?.imageCover} alt={product?.product?.title} />
             </div>
+            <Helmet>
+              <title>Cart</title>  
+            </Helmet>
             <div className="col-md-11">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="col-md-9">
@@ -70,11 +75,17 @@ export default function Cart() {
                   <button  onClick={() => { product.count === 1 ?  deleteProduct(product?.product.id) :  updateQuantity(product?.product._id, product.count - 1) }} className=' btn-outline'>-</button>
                 </div>
               </div>
-            </div>
-          </div>
+            </div>            
+          </div>          
         )}
       </>
       }
+      <div className='d-flex w-100 justify-content-center'>
+        <Link className='w-25' to={'/checkout'}>
+        <button className='w-100 h-10 btn bg-main'>Pay</button>
+        </Link>
+      </div>
+
     </div>
   )
 }

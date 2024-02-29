@@ -21,9 +21,12 @@ export default function CategorySlider() {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 50,
+    speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
+    autoplay: true,       
+    autoplaySpeed: 1500,
+    arrows: false,
     
   };
   return (

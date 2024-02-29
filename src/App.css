@@ -109,3 +109,16 @@ a:hover {
   animation-iteration-count: infinite; 
   animation-direction: alternate;
 }
+
+.offlineMlsg{
+  background-color: var(--bgColor);
+  font-weight: 600;
+  border: 1px solid var(--bgColor);
+  border-radius: 15px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  box-shadow: var(--shadow);
+  z-index: 99999;
+  padding:7px 24px;
+}

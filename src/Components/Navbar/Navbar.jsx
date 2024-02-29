@@ -11,13 +11,15 @@ import categoryIcon from '../../Assets/category.png'
 import brandsIcon from '../../Assets/tag.png'
 import HomeIcon from '../../Assets/HomeIcon.svg'
 import { CartContext } from '../../Context/CartContext';
+import { WishListContext } from '../../Context/WishListContext';
 
 
 export default function Navbar() {
 
   // let { counter } = useContext(CounterContext);
   const { userToken, setUserToken } = useContext(UserContext);
-  const {numOfCartItems} = useContext(CartContext);
+  const { numOfCartItems } = useContext(CartContext);
+  const { numOfFavItems } = useContext(WishListContext);
   let navigate = useNavigate();
 
 
@@ -58,8 +60,13 @@ export default function Navbar() {
               </span>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to={'/wishlist'} className="nav-link " ><img height={25} src={favourite} alt="" /></Link>
+          <li className="nav-item position-relative ">
+            <Link to={'/wishlist'} className="nav-link  " >
+              <img height={25} src={favourite} alt="" /></Link>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+              {numOfFavItems}
+              <span class="visually-hidden">unread messages</span>
+            </span>
           </li>
         </ul> : null
 

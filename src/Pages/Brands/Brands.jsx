@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet';
 import { InfinitySpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 
@@ -21,6 +22,9 @@ export default function Brands() {
 
   return (
     <div className='container'>
+            <Helmet>
+              <title>Brands</title>  
+            </Helmet>
       {loader === true ? (
         <div className='d-flex justify-content-center'>
           <InfinitySpin

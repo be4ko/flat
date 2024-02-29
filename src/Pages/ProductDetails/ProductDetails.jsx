@@ -6,6 +6,7 @@ import { InfinitySpin } from 'react-loader-spinner'
 import Slider from 'react-slick';
 import { CartContext } from '../../Context/CartContext';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 
 export default function ProductDetails() {
@@ -49,6 +50,9 @@ export default function ProductDetails() {
 
   return ( 
     <div className="container">
+          <Helmet>
+            <title>{details.title}</title>
+          </Helmet>
       {loading === true ?
         <div className='d-flex justify-content-center'>
           <InfinitySpin
